@@ -14,6 +14,10 @@ spec:
       labels:
         app: packageserver
     spec:
+      {{- if .Values.package.hostNetwork }}
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      {{- end }}
       securityContext:
         runAsNonRoot: true
         seccompProfile:
