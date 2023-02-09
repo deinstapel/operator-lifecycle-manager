@@ -23,7 +23,7 @@ spec:
           type: RuntimeDefault
       serviceAccountName: olm-operator-serviceaccount
       {{- if or .Values.olm.tlsSecret .Values.olm.clientCASecret }}
-      volumes: 
+      volumes:
       {{- end }}
       {{- if .Values.olm.tlsSecret }}
       - name: srv-cert
@@ -92,6 +92,7 @@ spec:
           ports:
             - containerPort: {{ .Values.olm.service.internalPort }}
               name: metrics
+              protocol: TCP
           livenessProbe:
             httpGet:
               path: /healthz

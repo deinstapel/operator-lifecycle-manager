@@ -58,6 +58,7 @@ spec:
         imagePullPolicy: {{ .Values.package.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.package.service.internalPort }}
+          protocol: TCP
         livenessProbe:
           httpGet:
             scheme: HTTPS
